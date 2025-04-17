@@ -22,7 +22,7 @@ export default function Home() {
               src={"/bahan/button/6.png"}
               width={120}
               height={120}
-              className="absolute left-1/2 -translate-x-[45%] bottom-8 cursor-pointer"
+              className="absolute left-1/2 -translate-x-[45%] bottom-8 cursor-pointer transition-transform duration-300 hover:-translate-y-1.5"
             />
           </Link>
         </div>
