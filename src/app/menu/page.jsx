@@ -3,9 +3,11 @@ import LayoutUtama from "../layout/utama";
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useCoin } from "@/context/coinContext";
 
 export default function Menu() {
   const [coinBuyer, setCoinBuyer] = useState(50000);
+  const { tambahCoin } = useCoin();
 
   // useEffect(() => {
   //   console.log(coinBuyer);
@@ -49,7 +51,7 @@ export default function Menu() {
 
           {/* button unutk  menaacari coin */}
 
-          <div onClick={handleTambahCoinBuyer}>
+          <div onClick={tambahCoin}>
             <Image
               alt="button"
               src={"/bahan/button/19.png"}
@@ -68,7 +70,7 @@ export default function Menu() {
           />
 
           <div className="flex  items-center  gap-3 absolute left-14 bottom-0">
-            <Link href={"/buyer"} className="">
+            <Link href={"/buyer-seller?role=buyer"} className="">
               <Image
                 alt="button"
                 src={"/button/buyer.png"}
