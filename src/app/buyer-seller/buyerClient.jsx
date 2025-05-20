@@ -50,6 +50,7 @@ export default function BuyerClient() {
           backgroundPosition: "center",
         }}
       >
+        {/* debug error  */}
         <Link href={"/menu"}>
           <Image
             alt="button"

@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import BuyerClient from "./BuyerClient";
+import BuyerClient from "./buyerClient";
 
 export default function Page() {
   return (
