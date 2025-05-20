@@ -1,6 +1,7 @@
 import "./globals.css";
 import { CoinProvider } from "@/context/coinContext";
-import { MoneyProvider } from "@/context/moneyContext"; // Tambahkan ini
+import { MoneyProvider } from "@/context/moneyContext";
+import { AudioProvider } from "@/context/audioProvider";
 
 export const metadata = {
   title: "App Keren",
@@ -12,7 +13,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <CoinProvider>
-          <MoneyProvider>{children}</MoneyProvider>
+          <MoneyProvider>
+            <AudioProvider>{children}</AudioProvider>
+          </MoneyProvider>
         </CoinProvider>
       </body>
     </html>

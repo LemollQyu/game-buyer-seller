@@ -42,6 +42,11 @@ export default function Pembelian() {
 
   console.log(totalHarga);
 
+  const handleReset = () => {
+    setTotalHarga(0);
+    setNamaBuah("");
+  };
+
   // handle pembayarannya
   const handleClickBayar = () => {
     if (coinBuyer >= totalHarga) {
@@ -67,7 +72,7 @@ export default function Pembelian() {
         <div
           className=" overflow-hidden"
           style={{
-            // backgroundImage: "url(/tampilan/9.png)",
+            backgroundImage: "url(/tampilan/8.png)",
             width: "100%",
             height: "700px",
             backgroundSize: "contain",
@@ -390,6 +395,12 @@ export default function Pembelian() {
 
           {/* <Link href={"/bayar"}> */}
           <div className="rounded-full absolute bottom-10 left-14 flex flex-col gap-2">
+            <div
+              onClick={handleReset}
+              className=" -amber-800 bg-amber-600 cursor-pointer  -4  w-[150px] flex items-center justify-center h-[50px] rounded-full"
+            >
+              <p className="font-bold text-amber-950">Reset Pembelian</p>
+            </div>
             <div className=" -amber-800 bg-amber-600  -4  w-[150px] flex items-center justify-center h-[50px] rounded-full">
               <p className="font-bold text-amber-950">Beli : {namaBuah}</p>
             </div>

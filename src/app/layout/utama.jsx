@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useCoin } from "@/context/coinContext"; // path-nya sesuaikan
 import { useMoney } from "@/context/moneyContext"; // ✅ Tambahkan ini
+import MusikManual from "@/comp/music";
 
 const LayoutUtama = ({ children }) => {
   const { coinBuyer } = useCoin(); // Ambil coin dari context

@@ -1,16 +1,45 @@
 import Link from "next/link";
 import LayoutUtama from "../layout/utama";
+import Image from "next/image";
+import ShinyButton from "@/comp/btnUpToko";
 
 export default function Seller() {
   return (
     <>
       <LayoutUtama>
-        <h1>Hello Seller</h1>
-        <Link href={"/buyer-seller?role=seller"}>
-          <div className="border rounded-lg w-10 flex justify-center items-center">
-            Upgrade Toko
-          </div>
-        </Link>
+        <div
+          className=" overflow-hidden"
+          style={{
+            backgroundImage: "url(/tampilan/5.png)",
+            width: "100%",
+            height: "700px",
+            backgroundSize: "contain",
+            backgroundPosition: "center",
+          }}
+        >
+          {/* <div className="w-36 h-36 absolute left-1/2 -translate-x-1/2 bottom-56 rounded-full bg-gradient-to-b from-yellow-400 via-yellow-500 to-orange-500 shadow-lg flex items-center justify-center border-[8px] border-orange-400 ">
+            <div className="absolute inset-1 rounded-full bg-gradient-to-b from-yellow-300 to-yellow-500 flex items-center justify-center font-bold text-lg text-[#fefefe] text-center">
+              Upgrade <br />
+              Toko
+            </div>
+          </div> */}
+
+          <Link
+            href={"/buyer-seller?role=seller"}
+            className="absolute left-1/2 -translate-x-1/2 bottom-56"
+          >
+            <ShinyButton />
+          </Link>
+          <Link href={"/menu"}>
+            <Image
+              alt="button"
+              src={"/button/23.png"}
+              width={100}
+              height={100}
+              className="absolute left-12 top-32  bottom-8 cursor-pointer transition-transform duration-300 hover:-translate-y-1.5"
+            />
+          </Link>
+        </div>
       </LayoutUtama>
     </>
   );

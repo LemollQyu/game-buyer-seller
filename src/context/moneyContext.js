@@ -6,7 +6,7 @@ const MoneyContext = createContext();
 
 // Provider
 export const MoneyProvider = ({ children }) => {
-  const [money, setMoney] = useState(20000); // default 20.000
+  const [money, setMoney] = useState(0); // default 20.000
 
   return (
     <MoneyContext.Provider value={{ money, setMoney }}>

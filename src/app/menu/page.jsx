@@ -4,10 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useCoin } from "@/context/coinContext";
+import { useAudio } from "@/context/audioProvider";
 
 export default function Menu() {
   const [coinBuyer, setCoinBuyer] = useState(50000);
   const { tambahCoin } = useCoin();
+  const { toggleAudio, isPlaying } = useAudio();
 
   // useEffect(() => {
   //   console.log(coinBuyer);
@@ -63,6 +65,7 @@ export default function Menu() {
 
           <Image
             alt="button"
+            onClick={toggleAudio}
             src={"/bahan/button/15.png"}
             width={80}
             height={80}
@@ -88,6 +91,16 @@ export default function Menu() {
                 className="cursor-pointer transition-transform duration-300 hover:-translate-y-1.5 rounded-md"
               />
             </Link>
+          </div>
+
+          <div className="w-[400px] h-[480px]  absolute left-1/2 top-1/2 -translate-1/2">
+            <Image
+              src={"/karakter/1.png"}
+              height={500}
+              width={500}
+              alt="karakter"
+              className="object-center w-full h-full"
+            />
           </div>
         </div>
       </LayoutUtama>
