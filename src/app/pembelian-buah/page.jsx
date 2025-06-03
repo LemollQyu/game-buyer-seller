@@ -3,12 +3,27 @@
 import LayoutUtama from "../layout/utama";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useCoin } from "@/context/coinContext";
 import { useMoney } from "@/context/moneyContext"; // ← import context money
 
 export default function Pembelian() {
   const kata = "Hollaworldeld";
+
+  const audioRef = useRef(null);
+  const audioMoneyRef = useRef(null); // untuk suara "money"
+
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     audioRef.current = new Audio("/musik/press-sound.mp3");
+  //   }
+  // }, []);
+
+  const playAudio = () => {
+    audioRef.current
+      ?.play()
+      .catch((e) => console.error("Gagal memutar audio:", e));
+  };
 
   // Menyusun kata yang diulang sebanyak 12.100 kali
   let result = "";
@@ -45,11 +60,25 @@ export default function Pembelian() {
   const handleReset = () => {
     setTotalHarga(0);
     setNamaBuah("");
+    playAudio();
   };
 
-  // handle pembayarannya
+  useEffect(() => {
+    audioRef.current = new Audio("/musik/press-sound.mp3");
+    audioMoneyRef.current = new Audio("/musik/money-sound.mp3");
+  }, []);
+
+  const playAudioMoney = () => {
+    audioMoneyRef.current
+      ?.play()
+      .catch((e) => console.error("Gagal memutar audio:", e));
+  };
+
   const handleClickBayar = () => {
     if (coinBuyer >= totalHarga) {
+      // Reset waktu dan mainkan ulang dari awal
+      playAudioMoney();
+
       setCoinBuyer(coinBuyer - totalHarga);
       setMoney((prev) => prev + totalHarga); // Tambah ke money
       console.log("Bayar berhasil. Sisa koin: ", coinBuyer - totalHarga);
@@ -99,6 +128,7 @@ export default function Pembelian() {
               <div
                 className="w-[60px] h-full"
                 onClick={() => {
+                  playAudio();
                   setTotalHarga(totalHarga + 2500);
                   setNamaBuah("Jeruk");
                 }}
@@ -114,6 +144,7 @@ export default function Pembelian() {
               <div
                 className="w-[60px] h-full  "
                 onClick={() => {
+                  playAudio();
                   setNamaBuah("Apel");
                   setTotalHarga(totalHarga + 5000);
                 }}
@@ -129,6 +160,7 @@ export default function Pembelian() {
               <div
                 className="w-[60px] h-full  "
                 onClick={() => {
+                  playAudio();
                   setTotalHarga(totalHarga + 2500);
                   setNamaBuah("Jeruk");
                 }}
@@ -144,6 +176,7 @@ export default function Pembelian() {
               <div
                 className="w-[60px] h-full  "
                 onClick={() => {
+                  playAudio();
                   setTotalHarga(totalHarga + 5000);
                   setNamaBuah("Pear");
                 }}
@@ -159,6 +192,7 @@ export default function Pembelian() {
               <div
                 className="w-[60px] h-full  "
                 onClick={() => {
+                  playAudio();
                   setTotalHarga(totalHarga + 3000);
                   setNamaBuah("Leci");
                 }}
@@ -178,6 +212,7 @@ export default function Pembelian() {
               <div
                 className="w-[80px] h-full "
                 onClick={() => {
+                  playAudio();
                   setTotalHarga(totalHarga + 5000);
                   setNamaBuah("Pear");
                 }}
@@ -193,6 +228,7 @@ export default function Pembelian() {
               <div
                 className="w-[80px] h-full"
                 onClick={() => {
+                  playAudio();
                   setTotalHarga(totalHarga + 2000);
                   setNamaBuah("Terong");
                 }}
@@ -208,6 +244,7 @@ export default function Pembelian() {
               <div
                 className="w-[80px] h-full  "
                 onClick={() => {
+                  playAudio();
                   setTotalHarga(totalHarga + 3000);
                   setNamaBuah("Kol");
                 }}
@@ -223,6 +260,7 @@ export default function Pembelian() {
               <div
                 className="w-[60px] h-full  "
                 onClick={() => {
+                  playAudio();
                   setTotalHarga(totalHarga + 5000);
                   setNamaBuah("Kol");
                 }}
@@ -242,6 +280,7 @@ export default function Pembelian() {
               <div
                 className="w-[70px] h-full  "
                 onClick={() => {
+                  playAudio();
                   setTotalHarga(totalHarga + 4000);
                   setNamaBuah("Kol");
                 }}
@@ -257,6 +296,7 @@ export default function Pembelian() {
               <div
                 className="w-[70px] h-full  "
                 onClick={() => {
+                  playAudio();
                   setTotalHarga(totalHarga + 5000);
                   setNamaBuah("Lemon");
                 }}
@@ -272,6 +312,7 @@ export default function Pembelian() {
               <div
                 className="w-[70px] h-full  "
                 onClick={() => {
+                  playAudio();
                   setTotalHarga(totalHarga + 5000);
                   setNamaBuah("Pear");
                 }}
@@ -287,6 +328,7 @@ export default function Pembelian() {
               <div
                 className="w-[70px] h-full  "
                 onClick={() => {
+                  playAudio();
                   setTotalHarga(totalHarga + 2500);
                   setNamaBuah("Kentang");
                 }}
@@ -302,6 +344,7 @@ export default function Pembelian() {
               <div
                 className="w-[70px] h-full"
                 onClick={() => {
+                  playAudio();
                   setTotalHarga(totalHarga + 3000);
                   setNamaBuah("Leci");
                 }}
@@ -321,6 +364,7 @@ export default function Pembelian() {
               <div
                 className="w-[90px] h-full  "
                 onClick={() => {
+                  playAudio();
                   setTotalHarga(totalHarga + 12000);
                   setNamaBuah("Semangka");
                 }}
@@ -336,21 +380,23 @@ export default function Pembelian() {
               <div
                 className="w-[90px] h-full  "
                 onClick={() => {
+                  playAudio();
                   setTotalHarga(totalHarga + 10000);
-                  setNamaBuah("Waloh");
+                  setNamaBuah("Labu");
                 }}
               >
                 <Image
                   src={"/buah/waloh.png"}
                   height={70}
                   width={70}
-                  alt="Waloh"
+                  alt="Labu"
                   className="object-contain w-full h-full"
                 />
               </div>
               <div
                 className="w-[90px] h-full  "
                 onClick={() => {
+                  playAudio();
                   setTotalHarga(totalHarga + 3000);
                   setNamaBuah("Tomat");
                 }}
@@ -366,6 +412,7 @@ export default function Pembelian() {
               <div
                 className="w-[90px] h-full  "
                 onClick={() => {
+                  playAudio();
                   setTotalHarga(totalHarga + 12000);
                   setNamaBuah("Semangka");
                 }}
@@ -383,7 +430,7 @@ export default function Pembelian() {
 
           {/* menu home */}
 
-          <Link href={"/menu"}>
+          <Link onClick={playAudio} href={"/menu"}>
             <Image
               alt="button"
               src={"/bahan/button/13.png"}

@@ -2,7 +2,7 @@
 import LayoutUtama from "../layout/utama";
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useCoin } from "@/context/coinContext";
 import { useAudio } from "@/context/audioProvider";
 
@@ -10,6 +10,20 @@ export default function Menu() {
   const [coinBuyer, setCoinBuyer] = useState(50000);
   const { tambahCoin } = useCoin();
   const { toggleAudio, isPlaying } = useAudio();
+
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      audioRef.current = new Audio("/musik/press-sound.mp3");
+    }
+  }, []);
+
+  const playAudio = () => {
+    audioRef.current
+      ?.play()
+      .catch((e) => console.error("Gagal memutar audio:", e));
+  };
 
   // useEffect(() => {
   //   console.log(coinBuyer);
@@ -41,7 +55,7 @@ export default function Menu() {
             backgroundPosition: "center",
           }}
         >
-          <Link href={"/"}>
+          <Link onClick={playAudio} href={"/"}>
             <Image
               alt="button"
               src={"/bahan/button/13.png"}
@@ -73,7 +87,11 @@ export default function Menu() {
           />
 
           <div className="flex  items-center  gap-3 absolute left-14 bottom-0">
-            <Link href={"/buyer-seller?role=buyer"} className="">
+            <Link
+              onClick={playAudio}
+              href={"/buyer-seller?role=buyer"}
+              className=""
+            >
               <Image
                 alt="button"
                 src={"/button/buyer.png"}
@@ -82,7 +100,7 @@ export default function Menu() {
                 className=" translate-y-2 cursor-pointer transition-transform duration-300 hover:-translate-y-1.5 rounded-md"
               />
             </Link>
-            <Link href={"/seller"} className="">
+            <Link onClick={playAudio} href={"/seller"} className="">
               <Image
                 alt="button"
                 src={"/button/seller.png"}

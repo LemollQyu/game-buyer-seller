@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { useCoin } from "@/context/coinContext";
 import { useMoney } from "@/context/moneyContext"; // ← import context money
+import { useRef, useEffect } from "react";
 
 export default function Pembelian() {
   const kata = "Hollaworldeld";
@@ -23,28 +24,42 @@ export default function Pembelian() {
   const { coinBuyer, setCoinBuyer, tambahCoin } = useCoin();
   const { setMoney, money } = useMoney();
 
-  // const arrayBuah = [
-  //   ["apel", 5000],
-  //   ["jeruk", 2500],
-  //   ["pear", 5000],
-  //   ["leci", 3000],
-  //   ["terong", 2000],
-  //   ["sawi", 3000],
-  //   ["lemon", 5000][("pisang", 4000)],
-  //   ["kentang", 2500],
-  //   ["semangka", 12000],
-  //   ["waloh", 10000],
-  //   ["tomat", 2000],
-  // ];
-
   const [totalHarga, setTotalHarga] = useState(0);
   const [namaBuah, setNamaBuah] = useState("");
 
   console.log(totalHarga);
 
+  const audioRef = useRef(null);
+  const audioMoneyRef = useRef(null); // untuk suara "money"
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      audioRef.current = new Audio("/musik/press-sound.mp3");
+    }
+  }, []);
+
+  const playAudio = () => {
+    audioRef.current
+      ?.play()
+      .catch((e) => console.error("Gagal memutar audio:", e));
+  };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      audioMoneyRef.current = new Audio("/musik/money-sound.mp3");
+    }
+  }, []);
+
+  const playAudioMoney = () => {
+    audioMoneyRef.current
+      ?.play()
+      .catch((e) => console.error("Gagal memutar audio:", e));
+  };
+
   const handleReset = () => {
     setTotalHarga(0);
     setNamaBuah("");
+    playAudio();
   };
 
   // handle pembayarannya
@@ -55,6 +70,7 @@ export default function Pembelian() {
       console.log("Bayar berhasil. Sisa koin: ", coinBuyer - totalHarga);
       console.log("Uang sekarang: ", money + totalHarga);
       setTotalHarga(0); // Reset total belanja
+      playAudioMoney();
     } else {
       console.log(
         "Koin tidak cukup! Coin anda: ",
@@ -101,6 +117,7 @@ export default function Pembelian() {
                 onClick={() => {
                   setTotalHarga(totalHarga + 6000);
                   setNamaBuah("Roti Kering");
+                  playAudio();
                 }}
               >
                 <Image
@@ -116,6 +133,7 @@ export default function Pembelian() {
                 onClick={() => {
                   setNamaBuah("Roti Gandum");
                   setTotalHarga(totalHarga + 6000);
+                  playAudio();
                 }}
               >
                 <Image
@@ -131,6 +149,7 @@ export default function Pembelian() {
                 onClick={() => {
                   setTotalHarga(totalHarga + 14000);
                   setNamaBuah("Roti Artisan");
+                  playAudio();
                 }}
               >
                 <Image
@@ -146,6 +165,7 @@ export default function Pembelian() {
                 onClick={() => {
                   setTotalHarga(totalHarga + 10000);
                   setNamaBuah("Roti Sourdough");
+                  playAudio();
                 }}
               >
                 <Image
@@ -161,6 +181,7 @@ export default function Pembelian() {
                 onClick={() => {
                   setTotalHarga(totalHarga + 8000);
                   setNamaBuah("Roti Tawar");
+                  playAudio();
                 }}
               >
                 <Image
@@ -180,6 +201,7 @@ export default function Pembelian() {
                 onClick={() => {
                   setTotalHarga(totalHarga + 8000);
                   setNamaBuah("Roti Tawar");
+                  playAudio();
                 }}
               >
                 <Image
@@ -195,6 +217,7 @@ export default function Pembelian() {
                 onClick={() => {
                   setTotalHarga(totalHarga + 10000);
                   setNamaBuah("Roti Sourdough");
+                  playAudio();
                 }}
               >
                 <Image
@@ -210,6 +233,7 @@ export default function Pembelian() {
                 onClick={() => {
                   setTotalHarga(totalHarga + 20000);
                   setNamaBuah("Roti Campuran");
+                  playAudio();
                 }}
               >
                 <Image
@@ -225,6 +249,7 @@ export default function Pembelian() {
                 onClick={() => {
                   setTotalHarga(totalHarga + 7000);
                   setNamaBuah("Roti Kaiser Roll");
+                  playAudio();
                 }}
               >
                 <Image
@@ -244,6 +269,7 @@ export default function Pembelian() {
                 onClick={() => {
                   setTotalHarga(totalHarga + 12000);
                   setNamaBuah("Roti Gandum Lapis");
+                  playAudio();
                 }}
               >
                 <Image
@@ -259,6 +285,7 @@ export default function Pembelian() {
                 onClick={() => {
                   setTotalHarga(totalHarga + 8000);
                   setNamaBuah("Roti Tawar");
+                  playAudio();
                 }}
               >
                 <Image
@@ -274,6 +301,7 @@ export default function Pembelian() {
                 onClick={() => {
                   setTotalHarga(totalHarga + 9000);
                   setNamaBuah("Humburger");
+                  playAudio();
                 }}
               >
                 <Image
@@ -289,6 +317,7 @@ export default function Pembelian() {
                 onClick={() => {
                   setTotalHarga(totalHarga + 8000);
                   setNamaBuah("Roti Tawar");
+                  playAudio();
                 }}
               >
                 <Image
@@ -304,6 +333,7 @@ export default function Pembelian() {
                 onClick={() => {
                   setTotalHarga(totalHarga + 11000);
                   setNamaBuah("Roti Grissini");
+                  playAudio();
                 }}
               >
                 <Image
@@ -323,6 +353,7 @@ export default function Pembelian() {
                 onClick={() => {
                   setTotalHarga(totalHarga + 12000);
                   setNamaBuah("Roti Gandum Lapis");
+                  playAudio();
                 }}
               >
                 <Image
@@ -338,6 +369,7 @@ export default function Pembelian() {
                 onClick={() => {
                   setTotalHarga(totalHarga + 11000);
                   setNamaBuah("Roti Grissini");
+                  playAudio();
                 }}
               >
                 <Image
@@ -353,6 +385,7 @@ export default function Pembelian() {
                 onClick={() => {
                   setTotalHarga(totalHarga + 10000);
                   setNamaBuah("Roti Sourdough");
+                  playAudio();
                 }}
               >
                 <Image
@@ -368,6 +401,7 @@ export default function Pembelian() {
                 onClick={() => {
                   setTotalHarga(totalHarga + 20000);
                   setNamaBuah("Roti Campuran");
+                  playAudio();
                 }}
               >
                 <Image
@@ -383,7 +417,7 @@ export default function Pembelian() {
 
           {/* menu home */}
 
-          <Link href={"/menu"}>
+          <Link onClick={playAudio} href={"/menu"}>
             <Image
               alt="button"
               src={"/bahan/button/13.png"}

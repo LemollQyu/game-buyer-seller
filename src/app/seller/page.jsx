@@ -1,9 +1,24 @@
+"use client";
 import Link from "next/link";
 import LayoutUtama from "../layout/utama";
 import Image from "next/image";
 import ShinyButton from "@/comp/btnUpToko";
+import { useRef, useEffect } from "react";
 
 export default function Seller() {
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      audioRef.current = new Audio("/musik/press-sound.mp3");
+    }
+  }, []);
+
+  const playAudio = () => {
+    audioRef.current
+      ?.play()
+      .catch((e) => console.error("Gagal memutar audio:", e));
+  };
   return (
     <>
       <LayoutUtama>
@@ -25,12 +40,13 @@ export default function Seller() {
           </div> */}
 
           <Link
+            onClick={playAudio}
             href={"/buyer-seller?role=seller"}
             className="absolute left-1/2 -translate-x-1/2 bottom-56"
           >
             <ShinyButton />
           </Link>
-          <Link href={"/menu"}>
+          <Link onClick={playAudio} href={"/menu"}>
             <Image
               alt="button"
               src={"/button/23.png"}

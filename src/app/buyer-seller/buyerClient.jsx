@@ -4,7 +4,7 @@ import LayoutUtama from "../layout/utama";
 import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useMoney } from "@/context/moneyContext";
 
 export default function BuyerClient() {
@@ -12,6 +12,24 @@ export default function BuyerClient() {
   const role = searchParams.get("role");
   const [etalaseTerbuka, setEtalaseTerbuka] = useState(false);
   const { money, setMoney } = useMoney();
+
+  const [disabledEtalase, setDisabledEtalase] = useState(false);
+
+  const DELAY_MS = 1500; // 1.5 detik delay
+
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      audioRef.current = new Audio("/musik/press-sound.mp3");
+    }
+  }, []);
+
+  const playAudio = () => {
+    audioRef.current
+      ?.play()
+      .catch((e) => console.error("Gagal memutar audio:", e));
+  };
 
   useEffect(() => {
     const status = localStorage.getItem("etalase-roti-terbuka");
@@ -21,21 +39,35 @@ export default function BuyerClient() {
   }, []);
 
   const handleBukaEtalaseRoti = () => {
+    if (disabledEtalase) return; // Cegah klik berulang cepat
+    setDisabledEtalase(true); // Nonaktifkan tombol sementara
+
     const hargaEtalase = 20000;
     if (money >= hargaEtalase) {
       setMoney(money - hargaEtalase);
       setEtalaseTerbuka(true);
       localStorage.setItem("etalase-roti-terbuka", "true");
+
+      playAudio();
     } else {
       alert("Saldo tidak cukup untuk membuka etalase!");
+      playAudio();
     }
+
+    setTimeout(() => setDisabledEtalase(false), DELAY_MS); // Aktifkan lagi setelah delay
   };
 
   const handleTutupEtalaseRoti = () => {
-    const hargaEtalase = 20000;
-    setMoney(money + hargaEtalase);
+    if (disabledEtalase) return;
+    setDisabledEtalase(true);
+
+    setMoney(money + 20000);
     setEtalaseTerbuka(false);
     localStorage.setItem("etalase-roti-terbuka", "false");
+
+    playAudio();
+
+    setTimeout(() => setDisabledEtalase(false), DELAY_MS);
   };
 
   return (
@@ -51,7 +83,7 @@ export default function BuyerClient() {
         }}
       >
         {/* debug error  */}
-        <Link href={"/menu"}>
+        <Link onClick={playAudio} href={"/menu"}>
           <Image
             alt="button"
             src={"/button/23.png"}
@@ -63,6 +95,7 @@ export default function BuyerClient() {
 
         {role == "seller" ? (
           <Link
+            onClick={playAudio}
             href={"/buyer-seller?role=buyer"}
             className="absolute right-5 bottom-42"
           >
@@ -75,7 +108,11 @@ export default function BuyerClient() {
             />
           </Link>
         ) : (
-          <Link href={"/seller"} className="absolute right-5 bottom-42">
+          <Link
+            onClick={playAudio}
+            href={"/seller"}
+            className="absolute right-5 bottom-42"
+          >
             <Image
               alt="button"
               src={"/button/seller.png"}
@@ -112,7 +149,7 @@ export default function BuyerClient() {
             </>
           ) : (
             <>
-              <Link href={"/pembelian-buah"}>
+              <Link onClick={playAudio} href={"/pembelian-buah"}>
                 <div className="w-[300px] h-[300px]">
                   <Image
                     alt="Etalase sayur"
@@ -123,7 +160,7 @@ export default function BuyerClient() {
                   />
                 </div>
               </Link>
-              <Link href={"/pembelian-roti"}>
+              <Link onClick={playAudio} href={"/pembelian-roti"}>
                 <div className="-ml-6 w-[300px] h-[300px]">
                   <Image
                     alt="Etalase roti"
