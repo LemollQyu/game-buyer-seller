@@ -4,8 +4,8 @@ import LayoutUtama from "../layout/utama";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
-import { useCoin } from "@/context/coinContext";
-import { useMoney } from "@/context/moneyContext"; // ← import context money
+import { useCoin } from "../../context/coinContext";
+import { useMoney } from "../../context/moneyContext"; // ← import context money
 
 export default function Pembelian() {
   const kata = "Hollaworldeld";

@@ -1,7 +1,7 @@
 import "./globals.css";
-import { CoinProvider } from "@/context/coinContext";
-import { MoneyProvider } from "@/context/moneyContext";
-import { AudioProvider } from "@/context/audioProvider";
+import { CoinProvider } from "../context/coinContext";
+import { MoneyProvider } from "../context/moneyContext";
+import { AudioProvider } from "../context/audioProvider";
 
 export const metadata = {
   title: "App Keren",

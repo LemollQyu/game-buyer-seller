@@ -2,7 +2,8 @@
 import Link from "next/link";
 import LayoutUtama from "../layout/utama";
 import Image from "next/image";
-import ShinyButton from "@/comp/btnUpToko";
+// import ShinyButton from "../comp/btnUpToko";
+import ShinyButton from "../../comp/btnUpToko";
 import { useRef, useEffect } from "react";
 
 export default function Seller() {

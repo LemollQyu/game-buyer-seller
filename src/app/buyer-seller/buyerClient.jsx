@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
-import { useMoney } from "@/context/moneyContext";
+import { useMoney } from "../../context/moneyContext";
 
 export default function BuyerClient() {
   const searchParams = useSearchParams();

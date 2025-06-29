@@ -3,8 +3,8 @@ import LayoutUtama from "../layout/utama";
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
-import { useCoin } from "@/context/coinContext";
-import { useAudio } from "@/context/audioProvider";
+import { useCoin } from "../../context/coinContext";
+import { useAudio } from "../../context/audioProvider";
 
 export default function Menu() {
   const [coinBuyer, setCoinBuyer] = useState(50000);
@@ -65,6 +65,16 @@ export default function Menu() {
             />
           </Link>
 
+          <Link onClick={playAudio} href={"/petunjuk"}>
+            <Image
+              alt="button"
+              src={"/button/pt.png"}
+              width={95}
+              height={95}
+              className="absolute left-14 top-32  bottom-8 cursor-pointer transition-transform duration-300 hover:-translate-y-1.5"
+            />
+          </Link>
+
           {/* button unutk  menaacari coin */}
 
           <div onClick={tambahCoin}>
@@ -85,6 +95,16 @@ export default function Menu() {
             height={80}
             className="absolute right-12 top-28   cursor-pointer transition-transform duration-300 hover:-translate-y-1.5"
           />
+
+          <Link onClick={playAudio} href={"/structure"}>
+            <Image
+              alt="button"
+              src={"/button/credit.png"}
+              width={80}
+              height={80}
+              className="absolute right-12 top-[19rem]   cursor-pointer transition-transform duration-300 hover:-translate-y-1.5"
+            />
+          </Link>
 
           <div className="flex  items-center  gap-3 absolute left-14 bottom-0">
             <Link

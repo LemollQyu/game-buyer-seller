@@ -4,8 +4,8 @@ import LayoutUtama from "../layout/utama";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { useCoin } from "@/context/coinContext";
-import { useMoney } from "@/context/moneyContext"; // ← import context money
+import { useCoin } from "../../context/coinContext";
+import { useMoney } from "../../context/moneyContext"; // ← import context money
 import { useRef, useEffect } from "react";
 
 export default function Pembelian() {
