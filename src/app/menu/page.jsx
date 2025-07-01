@@ -96,7 +96,7 @@ export default function Menu() {
             className="absolute right-12 top-28   cursor-pointer transition-transform duration-300 hover:-translate-y-1.5"
           />
 
-          <Link onClick={playAudio} href={"/structure"}>
+          <Link onClick={playAudio} href={"/credit"}>
             <Image
               alt="button"
               src={"/button/credit.png"}
