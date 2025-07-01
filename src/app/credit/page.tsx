@@ -118,7 +118,7 @@ const handleSlidePrevious = () => {
         <Image alt="gambar" height={300} width={300} src={"https://instagram.fsrg5-2.fna.fbcdn.net/v/t51.2885-19/496838726_18076124074875574_6662618378820573662_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_ht=instagram.fsrg5-2.fna.fbcdn.net&_nc_cat=110&_nc_oc=Q6cZ2QEoeOWQwiqOpsnPqESvfVjgDqymQU69yU6dMnxVgOgrxeU0gGtIW6YoyapKSkmPL84&_nc_ohc=-a_LJuWGBF0Q7kNvwGT1Dn4&_nc_gid=Q4lcOyE_geqAIpZntoEZsA&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfOUq0yk7pXocnrIr2oejCKZbBgrEVGw2SibXb2pophePw&oe=6866CB04&_nc_sid=8b3546"} className="w-full h-full object-cover"/>
        </div>
        <h1 className="text-xl font-medium mt-2">Himatul Mufiddah</h1>
-       <h1 className="text-sm font-medium mt-1">221030410</h1>
+       <h1 className="text-sm font-medium mt-1">22103041023</h1>
       </div>
       <div className="w-[710px] h-[317px]  flex flex-col items-center p-4">
        <div className="rounded-full w-42 h-42 overflow-hidden">
@@ -132,7 +132,7 @@ const handleSlidePrevious = () => {
         <Image alt="gambar" height={300} width={300} src={"https://instagram.fsrg5-1.fna.fbcdn.net/v/t51.2885-19/416448146_262230650001816_4652334942471095710_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_ht=instagram.fsrg5-1.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QHsdaiqv5p8Ygn_5e4HJE0Oamtl8Xc7rFueuWMtpQiwRu11fsxeItPTIRJxWX4sdxI&_nc_ohc=16HRnl51RgsQ7kNvwEvHK5O&_nc_gid=b--2kUR6FQ5v3xSFOTpawg&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfND5tIXSy72q01sVaQpic3R_WmB_cWxGESbgfBtM5PKVg&oe=6866BA8F&_nc_sid=8b3546"} className="w-full h-full object-cover"/>
        </div>
        <h1 className="text-xl font-medium mt-2">Arif Budi Laksono</h1>
-       <h1 className="text-sm font-medium mt-1">221030410</h1>
+       <h1 className="text-sm font-medium mt-1">22103041061</h1>
       </div>
     </div>
   </div>
